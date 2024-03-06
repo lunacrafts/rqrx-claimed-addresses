@@ -1,6 +1,8 @@
 const eth_util = require("ethereumjs-util");
-
+const fs = require('fs');
 const data = require("./data.json");
+
+const result = [];
 
 data.forEach((account) => {
   const key = account.operation_history.op_object.eth_pub_key;
@@ -12,8 +14,13 @@ data.forEach((account) => {
 
     console.log(address);
 
-    if(address == '0xbf8a3a95076b6ebdbd40b1f9cd6318e5fcbb0881') {
-        console.log(account);
-    }
+    result.push(address);
+
+    // if(address == '0xbf8a3a95076b6ebdbd40b1f9cd6318e5fcbb0882') {
+    //     console.log(account);
+    // }
   }
 });
+
+
+fs.writeFileSync('./output.txt', JSON.stringify(result, null, 4), 'utf-8');

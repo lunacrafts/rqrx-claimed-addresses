@@ -6,10 +6,8 @@ data.forEach((account) => {
   const key = account.operation_history.op_object.eth_pub_key;
 
   if (key) {
-    const publicKeyAsBuffer = eth_util.toBuffer('0x'+key);
-
+    const publicKeyAsBuffer = eth_util.toBuffer('0x' + key);
     const addressBuffer = eth_util.pubToAddress(publicKeyAsBuffer);
-
     const address = eth_util.bufferToHex(addressBuffer);
 
     console.log(address);
